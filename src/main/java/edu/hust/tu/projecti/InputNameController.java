@@ -13,7 +13,7 @@ public class InputNameController {
     private Connection connection = null;
     private PreparedStatement statement = null;
     private ResultSet resultSet = null;
-    private String dbURL = "jdbc:mysql://localhost:3306/",
+    private String dbURL = "jdbc:mysql://localhost:3306/ProjectI",
             userName= "root",
             password= "";
     @FXML
@@ -30,7 +30,7 @@ public class InputNameController {
                     password);
             statement = (PreparedStatement) connection.prepareStatement(sqlQuery);
             statement.setString(1, sUserName);
-            userID = statement.executeUpdate();
+            statement.executeUpdate();
 
         }catch (SQLException e) {}
 
@@ -39,13 +39,15 @@ public class InputNameController {
                    userName,
                    password);
            statement = (PreparedStatement) connection.prepareStatement("Select UID from ProjectI.Users "
-                   + "where Name = ?;");
+                   + "where ProjectI.Users.Name = ?;");
            statement.setString(1, sUserName);
            resultSet = statement.executeQuery();
-           userID = resultSet.getInt(1);
+           resultSet.next();
+           userID = resultSet.getInt("UID");
        }catch (SQLException e){}
 
-        System.out.println(userID);
+       // jump to play view
+        // use userID to add point after lost
 
 
     }
