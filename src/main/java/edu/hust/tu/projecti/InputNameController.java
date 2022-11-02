@@ -24,7 +24,7 @@ public class InputNameController {
             userName= "root",
             password= "";
     @FXML
-    protected void onClickConfirmName(ActionEvent event) {
+    protected void onClickConfirmName(ActionEvent event) throws SQLException {
         Stage stage;
         Scene scene;
         sUserName = tfUserName.getText();
@@ -48,19 +48,22 @@ public class InputNameController {
         }catch (SQLException e) {} catch (IOException e) {
             throw new RuntimeException(e);
         }
+            statement.executeUpdate();
 
         try{
            connection = DriverManager.getConnection(dbURL,
                    userName,
                    password);
            statement = (PreparedStatement) connection.prepareStatement("Select UID from ProjectI.Users "
-                   + "where Name = ?;");
+                   + "where ProjectI.Users.Name = ?;");
            statement.setString(1, sUserName);
            resultSet = statement.executeQuery();
-           userID = resultSet.getInt(1);
+           resultSet.next();
+           userID = resultSet.getInt("UID");
        }catch (SQLException e){}
 
-        System.out.println(userID);
+       // jump to play view
+        // use userID to add point after lost
 
 
     }
