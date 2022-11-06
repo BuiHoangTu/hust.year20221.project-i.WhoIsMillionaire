@@ -17,11 +17,14 @@ import java.security.interfaces.RSAKey;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class InputNameController implements Initializable {
+public class InputNameController {
     @FXML
     private TextField tfUserName;
     @FXML
     private Button bConfirmName;
+    private Stage stage;
+    private Scene scene;
+    private Parent root = null;
     private String sUserName;
     private Connection connection = null;
     private PreparedStatement statement = null;
@@ -30,68 +33,51 @@ public class InputNameController implements Initializable {
             userName= "root",
             password= "";
     @FXML
-    protected void onClickConfirmName(ActionEvent event) throws SQLException {
+    protected void onClickConfirmName(ActionEvent event) {
         sUserName = tfUserName.getText();
         String sqlQuery = "INSERT INTO ProjectI.Users " +
                 "(Name, Score, `Date`) " +
                 "VALUES(?, null, current_timestamp());";
 
         int userID = 0;
-        try{
+        try {
             connection = DriverManager.getConnection(dbURL,
                     userName,
                     password);
-            statement = (PreparedStatement) connection.prepareStatement(sqlQuery);
-            statement.setString(1, sUserName);
-            userID = statement.executeUpdate();
-//            Stage stage;
-//            Scene scene;
-//            Parent root = null;
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
-//            try {
-//                root = loader.load();
-//            }   catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            scene = new Scene(root);
-//            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//            stage.setScene(scene);
-//            stage.show();
-        }   catch (SQLException e)  {}
-        statement.executeUpdate();
-        try{
-           connection = DriverManager.getConnection(dbURL,
-                   userName,
-                   password);
-           statement = (PreparedStatement) connection.prepareStatement("Select UID from ProjectI.Users "
-                   + "where ProjectI.Users.Name = ?;");
-           statement.setString(1, sUserName);
-           resultSet = statement.executeQuery();
-           resultSet.next();
-           userID = resultSet.getInt("UID");
-       }    catch (SQLException e)  {}
+            if (sUserName != "") {
+                statement = (PreparedStatement) connection.prepareStatement(sqlQuery);
+                statement.setString(1, sUserName);
+                userID = statement.executeUpdate();
+                if (userID != 0) {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+                        root = loader.load();
+                        scene = new Scene(root);
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        stage.setScene(scene);
+                        stage.show();
+                }
+            }
+            connection.close();
+        }   catch (SQLException e) {
+            e.printStackTrace();
+        }   catch (Exception e) {
+            e.printStackTrace();
+        }
+        //        statement.executeUpdate();
+////        try{
+////           connection = DriverManager.getConnection(dbURL,
+////                   userName,
+////                   password);
+////           statement = (PreparedStatement) connection.prepareStatement("Select UID from ProjectI.Users "
+////                   + "where ProjectI.Users.Name = ?;");
+////           statement.setString(1, sUserName);
+////           resultSet = statement.executeQuery();
+////           resultSet.next();
+////           userID = resultSet.getInt("UID");
+////       }    catch (SQLException e)  {}
         // jump to play view
         // use userID to add point after lost
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        bConfirmName.setOnAction(event -> {
-            //lay input
-            Stage stage;
-            Scene scene;
-            Parent root = null;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
-            try {
-                root = loader.load();
-            }   catch (IOException e) {
-                e.printStackTrace();
-            }
-            scene = new Scene(root);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        });
-    }
 }
