@@ -3,19 +3,25 @@ package edu.hust.tu.projecti;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.net.URL;
 import java.security.interfaces.RSAKey;
 import java.sql.*;
+import java.util.ResourceBundle;
 
-public class InputNameController {
+public class InputNameController implements Initializable {
     @FXML
     private TextField tfUserName;
+    @FXML
+    private Button bConfirmName;
     private String sUserName;
     private Connection connection = null;
     private PreparedStatement statement = null;
@@ -25,8 +31,6 @@ public class InputNameController {
             password= "";
     @FXML
     protected void onClickConfirmName(ActionEvent event) throws SQLException {
-        Stage stage;
-        Scene scene;
         sUserName = tfUserName.getText();
         String sqlQuery = "INSERT INTO ProjectI.Users " +
                 "(Name, Score, `Date`) " +
@@ -40,16 +44,21 @@ public class InputNameController {
             statement = (PreparedStatement) connection.prepareStatement(sqlQuery);
             statement.setString(1, sUserName);
             userID = statement.executeUpdate();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
-            scene = new Scene(loader.load());
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        }catch (SQLException e) {} catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-            statement.executeUpdate();
-
+//            Stage stage;
+//            Scene scene;
+//            Parent root = null;
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+//            try {
+//                root = loader.load();
+//            }   catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            scene = new Scene(root);
+//            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//            stage.setScene(scene);
+//            stage.show();
+        }   catch (SQLException e)  {}
+        statement.executeUpdate();
         try{
            connection = DriverManager.getConnection(dbURL,
                    userName,
@@ -60,11 +69,29 @@ public class InputNameController {
            resultSet = statement.executeQuery();
            resultSet.next();
            userID = resultSet.getInt("UID");
-       }catch (SQLException e){}
-
-       // jump to play view
+       }    catch (SQLException e)  {}
+        // jump to play view
         // use userID to add point after lost
 
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        bConfirmName.setOnAction(event -> {
+            //lay input
+            Stage stage;
+            Scene scene;
+            Parent root = null;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
+            try {
+                root = loader.load();
+            }   catch (IOException e) {
+                e.printStackTrace();
+            }
+            scene = new Scene(root);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        });
     }
 }
