@@ -13,3 +13,4 @@ This project is a `Ai là Triệu phú` video game
 ## Dependencies
 
 - [JBDC : mysql-connector-java-5.1.40](https://dbschema.com/jdbc-driver/MySql.html)
+
