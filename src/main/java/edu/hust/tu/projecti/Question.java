@@ -6,19 +6,28 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * <h1> QUESTION </h1>
+ * This class is an implement of question in database.
+ * Each new object take a random question in database
+ * with level associate with level marked database
+ * <b>Note:</b> In this project, you will need to check
+ * for repeated questions.
+ * Create a List Question and a loop to push new question in
+ * if that question is not already inside. The loop stops
+ * when the number of questions is enough.
+ */
 public class Question {
     private int id;
-    private String question;        public String getQuestion() {
-        return question;
-    }
-    private List<String> answers;   public List<String> getAnswers() {
-        return answers;
-    }
-    private int rightAnswer;        public int getRightAnswer() {
-        return rightAnswer;
-    }
+    private String question;        public String getQuestion() {return question;}
+    private List<String> answers;   public List<String> getAnswers() {return answers;}
+    private int rightAnswer;        public int getRightAnswer() {return rightAnswer;}
 
-    //constructor
+    /**
+     * Constructor of question
+     * @param connection Connection to ProjectI database
+     * @param level Used to take equivalent Qlevel in database
+     */
     public Question(Connection connection, int level){
         this.answers = new ArrayList<String>(4);
 
