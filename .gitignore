@@ -64,6 +64,10 @@ build/
 hs_err_pid*
 
 
-#######################################
-#my ignore
+########################################my ignore
+#ignore the template
 [Hh]ello*
+#ignore hiden files 
+#.*
+#!/.gitignore
+
