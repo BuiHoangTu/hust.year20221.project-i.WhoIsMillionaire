@@ -12,9 +12,6 @@ import java.sql.*;
 public class InputNameController {
     @FXML
     private TextField tfUserName;
-    private final String dbURL = "jdbc:mysql://localhost:3306/ProjectI",
-            userName= "root",
-            password= "";
     private int userID;
 
     public InputNameController() {
@@ -28,31 +25,25 @@ public class InputNameController {
                 "VALUES(?, null, current_timestamp());";
 
         //int userID = 0;
-        Connection connection;
+        Connection connection = null;
         PreparedStatement statement;
         try{
-            connection = DriverManager.getConnection(dbURL,
-                    userName,
-                    password);
+            connection = DriverManager.getConnection(ALTPApplication.dbURL,
+                    ALTPApplication.userName,
+                    ALTPApplication.password);
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, sUserName);
             statement.executeUpdate();
 
+            statement = connection.prepareStatement("Select UID from ProjectI.Users "
+                    + "where ProjectI.Users.Name = ?;");
+            statement.setString(1, sUserName);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            userID = resultSet.getInt("UID");
         }catch (SQLException e) {}
 
-       try{
-           connection = DriverManager.getConnection(dbURL,
-                   userName,
-                   password);
-           statement = connection.prepareStatement("Select UID from ProjectI.Users "
-                   + "where ProjectI.Users.Name = ?;");
-           statement.setString(1, sUserName);
-           ResultSet resultSet = statement.executeQuery();
-           resultSet.next();
-           userID = resultSet.getInt("UID");
-       }catch (SQLException e){}
-
-        System.out.println(userID);
+        //System.out.println(userID);
 
 
 
@@ -68,6 +59,11 @@ public class InputNameController {
 
         stage.setScene(scene);
         stage.show();
+
+        try {
+            connection.close();
+        }
+        catch (SQLException e){}
     }
 
     public int getUserID() {return userID;}

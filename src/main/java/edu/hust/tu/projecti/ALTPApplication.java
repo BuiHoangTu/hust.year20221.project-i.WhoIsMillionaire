@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ALTPApplication extends Application {
+    public static final String dbURL = "jdbc:mysql://localhost:3306/ProjectI",
+            userName= "root",
+            password= "";
     @Override
     public void start(Stage stage){
         FXMLLoader fxmlLoader = new FXMLLoader(ALTPApplication.class.getResource("InputName-view.fxml"));
