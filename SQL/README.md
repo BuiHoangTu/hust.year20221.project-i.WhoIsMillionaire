@@ -1,6 +1,6 @@
 
 # Project I
-## Sub-project store questions
+## Sub-project : Store Questions
 
 This sub-project supports `Ai là Triệu phú` video game, it is used to add more questions to game's database
 
@@ -24,7 +24,8 @@ or follow instructions in [python main page](https://www.python.org/)
 ### Sources preparation 
 1. Make sure all your files is in excel format
 2. Put all those files in "InputExcel/"
-3. Insert questions
+
+### Insert questions
     * Use python virtual environment
         * For Mac OS / Linux
         ```bash
