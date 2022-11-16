@@ -18,6 +18,8 @@ import java.util.List;
  * when the number of questions is enough.
  */
 public class Question {
+	private static final sqlQuery = "SELECT * FROM Questions WHERE QLevel = ? ORDER BY RAND() LIMIT 1;";
+	private Connection connection;
     private int id;
     private String question;        public String getQuestion() {return question;}
     private List<String> answers;   public List<String> getAnswers() {return answers;}
@@ -30,10 +32,14 @@ public class Question {
      */
     public Question(Connection connection, int level){
         this.answers = new ArrayList<String>(4);
+		this.connection = connection;
 
-        //select a random question
-        var sqlQuery = "SELECT * FROM Questions WHERE QLevel = ? ORDER BY RAND() LIMIT 1;";
-        try {
+        this.refreshQuestion();
+        
+    }
+	
+	public void refreshQuestion(){
+		try {
             var statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, Integer.toString(level));
             var sqlQuestion = statement.executeQuery();
@@ -58,7 +64,7 @@ public class Question {
                 break;
             }
         }
-    }
+	}
 
     @Override
     public boolean equals(Object o){
