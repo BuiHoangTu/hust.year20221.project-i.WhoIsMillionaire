@@ -26,16 +26,16 @@ or follow instructions in [python main page](https://www.python.org/)
 2. Put all those files in "InputExcel/"
 
 ### Insert questions
-    * Use python virtual environment
-        * For Mac OS / Linux
-        ```bash
-        source ./PyContainer/bin/activate   
-        ```
-        * For Windows
-        ```bash
-        .\PyContainer\Scripts\activate
-        ```
-    * Run script
-        ```bash
-        ./PyContainer/bin/python ./PyContainer/src/main.py
-        ```
+* Use python virtual environment
+    * For Mac OS / Linux
+    ```bash
+    source ./PyContainer/bin/activate   
+    ```
+    * For Windows
+    ```bash
+    .\PyContainer\Scripts\activate
+    ```
+* Run script
+    ```bash
+    ./PyContainer/bin/python ./PyContainer/src/main.py
+    ```
