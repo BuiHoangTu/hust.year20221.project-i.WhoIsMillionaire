@@ -71,5 +71,5 @@ hs_err_pid*
 #.*
 #!/.gitignore
 #ignore Input Files
-InputExcel/*
+SQL/InputExcel/*
 

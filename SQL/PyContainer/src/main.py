@@ -49,7 +49,13 @@ def sqlInsert(Question : str, AList : list[int], RIndex : int):
     WA3 = selection
 
     rparams = (Question,AList[RIndex],AList[WA1], AList[WA2], AList[WA3], str(random.choice([5,10,15])))
-    cursor.execute(query, rparams)
+    try :
+        cursor.execute(query, rparams)
+    except SQLError as e:
+        #Error while executing statement: Duplicate entry 'Da gấu Bắc Cực có màu gì?-Đen' for key 'U_Question'
+        if "for key 'U_Question'" in e.args[1] : print ("Question : [[" + Question + "]] is not inserted because it is already inside database")
+        else : print(e)
+        
 #####################################END REGION#####################################
 
 
