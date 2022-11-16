@@ -9,13 +9,8 @@ from mysql.connector import Error as SQLError
 import random
 
 
-
-
-
-
 #get connection, cursor
 projectIDb = None
-
 try:
     projectIDb = mysql.connector.connect(
         host= "localhost",
@@ -29,19 +24,7 @@ except SQLError as e:
     print("DB Error " + e)
 cursor = projectIDb.cursor(prepared= True)
 
-"""
-query = "Select * from Questions"
-try:
-    cursor.execute(query)
-    questions = cursor.fetchall()
-    for question in questions:
-        print(question)
-except SQLError as e:
-    print("DB Error " + e)
- """
-
-
-## fuction region
+#####################################FUNCTION REGION#####################################
 def sqlQMap(char : int):
     if (char == 'A') : return 0
     if (char == 'B') : return 1
@@ -70,20 +53,27 @@ def sqlInsert(Question : str, AList : list[int], RIndex : int):
 #####################################END REGION#####################################
 
 
+#list all file in InputExcel
+inputFolder = "InputExcel"
+inputFiles = None
+for (root,dirs,files) in os.walk(inputFolder): inputFiles = files
 
+for inputFile in inputFiles :
+    #read pdf
+    reader = pd.read_excel(inputFolder + "/" + inputFile)
+    reader.reset_index()
+    for index, row in reader.iterrows(): #index is column number; row is each row
+        sqlQ = row[0]
+        aA = row[1]
+        aB = row[2]
+        aC = row[3]
+        aD = row[4]
+        sqlTrue = sqlQMap(row[5])
+        sqlInsert(sqlQ,[aA,aB,aC,aD],sqlTrue)
 
-#read pdf
-reader = pd.read_excel("Book.xlsx")
-reader.reset_index()
-for index, row in reader.iterrows(): #index is column number; row is each row
-    sqlQ = row[0]
-    aA = row[1]
-    aB = row[2]
-    aC = row[3]
-    aD = row[4]
-    sqlTrue = sqlQMap(row[5])
-    sqlInsert(sqlQ,[aA,aB,aC,aD],sqlTrue)
+#save to Db and close connection
 projectIDb.commit()
+projectIDb.close()
 
 
 

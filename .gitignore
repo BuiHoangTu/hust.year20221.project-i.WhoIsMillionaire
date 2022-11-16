@@ -70,4 +70,6 @@ hs_err_pid*
 #ignore hiden files 
 #.*
 #!/.gitignore
+#ignore Input Files
+InputExcel/*
 
