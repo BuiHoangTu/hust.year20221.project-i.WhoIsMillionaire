@@ -34,11 +34,15 @@ public class Question {
         this.answers = new ArrayList<String>(4);
 		this.connection = connection;
 
-        this.refreshQuestion();
+        this.refreshQuestion(level);
         
     }
 	
-	public void refreshQuestion(){
+	/**
+	 * This method refresh Question with another one at level = level
+	 * <b> Note </b> In this project, at least 5 Question object is needed.
+	 */
+	public void refreshQuestion(int level){
 		try {
             var statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, Integer.toString(level));
