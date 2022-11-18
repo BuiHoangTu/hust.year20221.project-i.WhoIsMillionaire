@@ -24,7 +24,7 @@ public class ALTPApplication extends Application {
             userName= "root",
             password= "";
     private static volatile Connection connection = null;
-        public Connection getConnection(){
+        public static Connection getConnection(){
             if(connection == null){
                 try{
                     connection = DriverManager.getConnection(

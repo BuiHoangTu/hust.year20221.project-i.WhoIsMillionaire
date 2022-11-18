@@ -24,13 +24,9 @@ public class InputNameController {
                 "(Name, Score, `Date`) " +
                 "VALUES(?, null, current_timestamp());";
 
-        //int userID = 0;
-        Connection connection = null;
+        Connection connection = ALTPApplication.getConnection();
         PreparedStatement statement;
         try{
-            connection = DriverManager.getConnection(ALTPApplication.dbURL,
-                    ALTPApplication.userName,
-                    ALTPApplication.password);
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, sUserName);
             statement.executeUpdate();
@@ -42,9 +38,6 @@ public class InputNameController {
             resultSet.next();
             userID = resultSet.getInt("UID");
         }catch (SQLException e) {}
-
-        //System.out.println(userID);
-
 
 
         // change view
@@ -60,10 +53,6 @@ public class InputNameController {
         stage.setScene(scene);
         stage.show();
 
-        try {
-            connection.close();
-        }
-        catch (SQLException e){}
     }
 
     public int getUserID() {return userID;}
