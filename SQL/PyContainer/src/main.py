@@ -31,7 +31,9 @@ def sqlQMap(char : int):
     if (char == 'C') : return 2
     if (char == 'D') : return 3
 
+qInserted = 0
 def sqlInsert(Question : str, AList : list[int], RIndex : int):
+    #if(++qInserted >5) : return 
     query = "INSERT INTO ProjectI.Questions(Question, RightAnswer, WrongAnswer1, WrongAnswer2, WrongAnswer3, QLevel)VALUES(%s, %s, %s, %s, %s, %s);"
     selections = [0,1,2,3]
     selections.remove(RIndex)

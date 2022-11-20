@@ -50,10 +50,11 @@ public class Question {
             sqlQuestion.next();
             this.id = sqlQuestion.getInt("QID");
             this.question = sqlQuestion.getString("Question");
-            this.answers.set(0, sqlQuestion.getString("RightAnswer"));
-            this.answers.set(1, sqlQuestion.getString("WrongAnswer1"));
-            this.answers.set(2, sqlQuestion.getString("WrongAnswer2"));
-            this.answers.set(3, sqlQuestion.getString("WrongAnswer3"));
+            this.answers.clear();
+            this.answers.add(0, sqlQuestion.getString("RightAnswer"));
+            this.answers.add(1, sqlQuestion.getString("WrongAnswer1"));
+            this.answers.add(2, sqlQuestion.getString("WrongAnswer2"));
+            this.answers.add(3, sqlQuestion.getString("WrongAnswer3"));
         } catch (SQLException e) {
             //throw new RuntimeException(e);
             System.out.println("Query failed in taking a question");
