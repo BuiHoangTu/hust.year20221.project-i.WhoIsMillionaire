@@ -1,4 +1,4 @@
-package edu.hust.tu.projecti;
+package edu.hust.tu.projecti.classes;
 
 import java.util.ArrayList;
 import java.util.List;

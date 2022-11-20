@@ -1,4 +1,4 @@
-package edu.hust.tu.projecti;
+package edu.hust.tu.projecti.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

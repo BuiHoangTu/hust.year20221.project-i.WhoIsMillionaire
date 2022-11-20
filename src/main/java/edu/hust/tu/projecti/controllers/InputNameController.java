@@ -1,5 +1,6 @@
-package edu.hust.tu.projecti;
+package edu.hust.tu.projecti.controllers;
 
+import edu.hust.tu.projecti.ALTPApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
