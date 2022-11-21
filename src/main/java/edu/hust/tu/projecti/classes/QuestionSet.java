@@ -17,10 +17,6 @@ public class QuestionSet {
     }
 
     public boolean add(Question question){
-        /*if(! this.contain(question)){
-            questionSet.add(question);
-            return true;
-        }else return false;*/
         return questionSet.add(question);
     }
 

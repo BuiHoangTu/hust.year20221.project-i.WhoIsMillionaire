@@ -81,6 +81,6 @@ public class Question {
 
     @Override
     public int hashCode() {
-        return this.id;
+        return Integer.hashCode(this.id);
     }
 }
