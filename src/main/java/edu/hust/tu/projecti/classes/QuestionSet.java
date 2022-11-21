@@ -25,10 +25,7 @@ public class QuestionSet {
     }
 
     public boolean contain(Question question){
-        for(var q : questionSet){
-            if(q.equals(question)) return true;
-        }
-        return false;
+        return questionSet.contains(question);
     }
 
     public Question get(int index){
