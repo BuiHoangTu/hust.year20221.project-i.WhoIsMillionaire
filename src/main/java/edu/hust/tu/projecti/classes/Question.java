@@ -79,4 +79,8 @@ public class Question {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return this.id;
+    }
 }
