@@ -73,5 +73,6 @@ hs_err_pid*
 #!/.gitignore
 #ignore Input Files
 SQL/InputExcel/*
+!SQL/InputExcel/Example.xlsx
 #lib
 !lib/*
