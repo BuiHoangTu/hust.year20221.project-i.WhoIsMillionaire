@@ -74,5 +74,6 @@ hs_err_pid*
 #ignore Input Files
 SQL/InputExcel/*
 !SQL/InputExcel/Questions_202211240029.csv
+SQL/PyContainer/src/MySql.py
 #lib
 !lib/*
