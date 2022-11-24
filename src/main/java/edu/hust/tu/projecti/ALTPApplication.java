@@ -20,7 +20,7 @@ public class ALTPApplication extends Application {
      * <p> Use {@link package.class#getConnection()} instead
      */
     @Deprecated
-    public static final String dbURL = "jdbc:mysql://localhost:3306/ProjectI",
+    public static final String dbURL = "jdbc:sqlite:SQL/sqlite_ProjectI.db",
             userName= "root",
             password= "";
     private static volatile Connection connection = null;
@@ -28,9 +28,9 @@ public class ALTPApplication extends Application {
             if(connection == null){
                 try{
                     connection = DriverManager.getConnection(
-                            dbURL,
+                            dbURL/*,
                             userName,
-                            password
+                            password*/
                     );
                 }catch (SQLException e){
                     e.printStackTrace();

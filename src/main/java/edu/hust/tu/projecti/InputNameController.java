@@ -20,9 +20,9 @@ public class InputNameController {
     @FXML
     protected void onClickConfirmName() {
         String sUserName = tfUserName.getText();
-        String sqlQuery = "INSERT INTO ProjectI.Users " +
-                "(Name, Score, `Date`) " +
-                "VALUES(?, null, current_timestamp());";
+        String sqlQuery = "INSERT INTO Users " +
+                "(Name, Score, Date) " +
+                "VALUES(?, null, current_timestamp);";
 
         Connection connection = ALTPApplication.getConnection();
         PreparedStatement statement;
@@ -31,8 +31,8 @@ public class InputNameController {
             statement.setString(1, sUserName);
             statement.executeUpdate();
 
-            statement = connection.prepareStatement("Select UID from ProjectI.Users "
-                    + "where ProjectI.Users.Name = ?;");
+            statement = connection.prepareStatement("Select UID from Users "
+                    + "where Users.Name = ?;");
             statement.setString(1, sUserName);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
