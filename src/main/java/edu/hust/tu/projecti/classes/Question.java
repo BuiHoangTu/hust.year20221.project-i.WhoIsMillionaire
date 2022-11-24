@@ -18,7 +18,7 @@ import java.util.List;
  * when the number of questions is enough.
  */
 public class Question {
-	private static final String sqlQuery = "SELECT * FROM Questions WHERE QLevel = ? ORDER BY RAND() LIMIT 1;";
+	private static final String sqlQuery = "SELECT * FROM Questions WHERE QLevel = ? ORDER BY RANDOM() LIMIT 1;";
 	private Connection connection;
     private int id;
     private String question;        public String getQuestion() {return question;}

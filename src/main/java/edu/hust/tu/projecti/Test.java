@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Test {
-    public static final String dbURL = "jdbc:sqlite:./SQL/",
+    public static final String dbURL = "jdbc:sqlite:SQL/sqlite_ProjectI.db",
             userName= "root",
             password= "";
     private static volatile Connection connection = null;
@@ -16,9 +16,7 @@ public class Test {
         if(connection == null){
             try{
                 connection = DriverManager.getConnection(
-                        dbURL,
-                        userName,
-                        password
+                        dbURL
                 );
             }catch (SQLException e){
                 e.printStackTrace();
