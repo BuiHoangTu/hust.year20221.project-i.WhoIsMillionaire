@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Test {
-    public static final String dbURL = "jdbc:mysql://localhost:3306/ProjectI",
+    public static final String dbURL = "jdbc:sqlite:./SQL/",
             userName= "root",
             password= "";
     private static volatile Connection connection = null;
