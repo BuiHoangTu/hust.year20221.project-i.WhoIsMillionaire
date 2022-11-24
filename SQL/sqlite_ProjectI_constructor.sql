@@ -15,11 +15,29 @@ CREATE TABLE "Users"   (
     UID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     Name varchar(100) NOT NULL,
     Passwd varchar(100) NOT NULL,
-    Score INTEGER DEFAULT NULL,
-    Date datetime DEFAULT current_timestamp,
+    CreateDate datetime DEFAULT current_timestamp,
     UNIQUE(Name)
 ) ;
-CREATE INDEX ixHighScore on Users (Score );
+
+
+CREATE TABLE Scores (
+    UID INTEGER NOT NULL,
+    PlayDate datetime DEFAULT CURRENT_TIMESTAMP,
+    
+    Score INTEGER DEFAULT 0,
+    CONSTRAINT fkUser 
+        FOREIGN KEY (UID)
+        REFERENCES Users (UID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    PRIMARY KEY (UID, PlayDate)
+);
+CREATE INDEX idxHighScore on Scores (Score );
+
+
+
+
+
 
 
 

@@ -32,6 +32,7 @@ public class ALTPApplication extends Application {
                             userName,
                             password*/
                     );
+                    connection.setAutoCommit(true);
                 }catch (SQLException e){
                     e.printStackTrace();
                 }

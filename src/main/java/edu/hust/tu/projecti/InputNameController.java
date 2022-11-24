@@ -30,6 +30,7 @@ public class InputNameController {
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, sUserName);
             statement.executeUpdate();
+            //connection.commit();
 
             statement = connection.prepareStatement("Select UID from Users "
                     + "where Users.Name = ?;");
