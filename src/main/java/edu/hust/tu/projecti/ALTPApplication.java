@@ -42,7 +42,7 @@ public class ALTPApplication extends Application {
 
     @Override
     public void start(Stage stage){
-        FXMLLoader fxmlLoader = new FXMLLoader(ALTPApplication.class.getResource("InputName-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ALTPApplication.class.getResource("LogIn-view.fxml"));
         Scene scene;
         try {
             scene = new Scene(fxmlLoader.load());
