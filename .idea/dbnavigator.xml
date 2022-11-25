@@ -32,7 +32,7 @@
       <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
     </connection>
     <connection id="8ed56689-0ea2-4254-824f-61ffd8a7bd00">
-      <console name="sqlite_ProjectI" type="STANDARD" schema="" session="Main" />
+      <console name="sqlite_ProjectI" type="STANDARD" schema="main" session="Main"><![CDATA[select * from Users]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -70,9 +70,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="b203862e-d6c4-4e51-b804-88438c69636a" active="true" signed="true">
+      <connection id="b203862e-d6c4-4e51-b804-88438c69636a" active="false" signed="true">
         <database>
-          <name value="Connection" />
+          <name value="XAMPP_MySQL" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
@@ -199,7 +199,7 @@
           <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="true" />
-          <connect-automatically value="true" />
+          <connect-automatically value="false" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="false" />
           <environment-type value="default" />
