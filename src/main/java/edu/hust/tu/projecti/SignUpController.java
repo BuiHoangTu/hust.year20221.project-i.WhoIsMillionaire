@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -54,6 +55,9 @@ public class SignUpController {
             statement.executeUpdate();
 
             isSignedUp = true;
+            lWarning.setText("Your account is created");
+            lWarning.setTextFill(Paint.valueOf("Blue"));
+            lWarning.setVisible(true);
             bConfirmSignUp.setText("Go To Login Page");
             tfPasswd.setDisable(true);
             tfUserName.setDisable(true);
