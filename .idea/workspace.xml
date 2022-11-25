@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be786f39-f34f-4c94-a8df-363fcf8801db" name="Changes" comment="change scene is ready">
-      <change beforePath="$PROJECT_DIR$/SQL/sqlite_ProjectI.db" beforeDir="false" afterPath="$PROJECT_DIR$/SQL/sqlite_ProjectI.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/hust/tu/projecti/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/hust/tu/projecti/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/hust/tu/projecti/SignUp-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/hust/tu/projecti/SignUp-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/hust/tu/projecti/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/hust/tu/projecti/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -142,9 +141,14 @@
           <option name="timeStamp" value="7" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/hust/tu/projecti/Test.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/src/main/java/edu/hust/tu/projecti/classes/P1QuestionSet.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/hust/tu/projecti/classes/P1QuestionSet.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

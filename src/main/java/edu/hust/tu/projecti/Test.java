@@ -1,5 +1,6 @@
 package edu.hust.tu.projecti;
 
+import edu.hust.tu.projecti.classes.P1QuestionSet;
 import edu.hust.tu.projecti.classes.Question;
 import edu.hust.tu.projecti.classes.QuestionSet;
 
@@ -26,7 +27,7 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        //một set câu hỏi, đảm bảo các câu khác nhau
+        /*//một set câu hỏi, đảm bảo các câu khác nhau
         QuestionSet set = new QuestionSet(5);
 
         for (var i =0; i <5; i++) {
@@ -56,6 +57,17 @@ public class Test {
         for (var a : q.getAnswers()) {
             System.out.println("\t" + a);
         }
-        System.out.println("\n" + q.getRightAnswer() + " NEXT \n");
+        System.out.println("\n" + q.getRightAnswer() + " NEXT \n");*/
+
+        //P1
+        var p1QS = new P1QuestionSet();
+        for (int i = 0; i < 15; i ++){
+            var q = p1QS.questions[i];
+            System.out.println(q.question);
+            for (var a : q.answers){
+                System.out.println("\t" + a);
+            }
+            System.out.println("TRUE " + "True Index : " + q.rightAnswer + " Value :" + q.answers[q.rightAnswer] + "\n\n\n");
+        }
     }
 }
