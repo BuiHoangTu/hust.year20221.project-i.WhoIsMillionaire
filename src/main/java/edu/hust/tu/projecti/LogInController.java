@@ -12,11 +12,11 @@ import java.sql.*;
 
 public class LogInController {
     @FXML
-    private Label lWarning;
-    @FXML
     private TextField tfUserName;
     @FXML
     private TextField tfPasswd;
+    @FXML
+    private Label lWarning;
 
     private int userID;
 
