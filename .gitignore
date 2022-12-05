@@ -79,5 +79,5 @@ SQL/.fuse_hidden*
 lib
 #python venv
 SQL/PyContainer/*
-!SQL/PyContainer/src/SQLite.py
-
+!SQL/PyContainer/src
+SQL/PyContainer/src/MySql.py
