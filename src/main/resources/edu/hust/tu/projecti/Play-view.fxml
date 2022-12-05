@@ -8,19 +8,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.hust.tu.projecti.PlayController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="31.0" layoutY="420.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
-            <Label alignment="BASELINE_CENTER" layoutX="66.0" layoutY="104.0" prefHeight="122.0" prefWidth="607.0" style="-fx-background-radius: 100px; -fx-background-color: #0598ff;" text="Câu hỏi" textFill="WHITE">
+            <Button fx:id="answer1" layoutX="31.0" layoutY="420.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
+            <Label fx:id="questionField" alignment="BASELINE_CENTER" layoutX="66.0" layoutY="104.0" prefHeight="122.0" prefWidth="607.0" style="-fx-background-radius: 100px; -fx-background-color: #0598ff;" text="Câu hỏi" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="31.0" layoutY="518.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
-            <Button layoutX="433.0" layoutY="518.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
-            <Button layoutX="433.0" layoutY="420.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
+            <Button fx:id="answer3" layoutX="31.0" layoutY="518.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
+            <Button fx:id="answer4" layoutX="433.0" layoutY="518.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
+            <Button fx:id="answer2" layoutX="433.0" layoutY="420.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>
