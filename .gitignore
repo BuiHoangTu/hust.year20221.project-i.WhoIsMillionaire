@@ -75,6 +75,7 @@ hs_err_pid*
 SQL/InputExcel/*
 !SQL/InputExcel/Questions_202211240029.csv
 SQL/.fuse_hidden*
+.idea/dbnavigator.xml
 #soft links
 lib
 #python venv
