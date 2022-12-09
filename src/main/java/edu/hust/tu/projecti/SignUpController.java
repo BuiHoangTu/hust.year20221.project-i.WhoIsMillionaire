@@ -1,5 +1,6 @@
 package edu.hust.tu.projecti;
 
+import edu.hust.tu.projecti.classes.Database;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -47,7 +48,7 @@ public class SignUpController {
         String sUserName = tfUserName.getText();
         String sPasswd = tfPasswd.getText();
 
-        Connection connection = ALTPApplication.getConnection();
+        Connection connection = Database.getConnection();
         PreparedStatement statement;
         try{
             statement = connection.prepareStatement("INSERT INTO Users " +

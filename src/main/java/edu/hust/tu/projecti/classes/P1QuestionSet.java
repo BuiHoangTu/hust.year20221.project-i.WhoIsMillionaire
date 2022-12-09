@@ -1,7 +1,5 @@
 package edu.hust.tu.projecti.classes;
 
-import edu.hust.tu.projecti.ALTPApplication;
-
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,7 +35,7 @@ public class P1QuestionSet {
      * <b> Note </b> In this project, at least 5 Question object is needed.
      */
     private void addQuestion(int level){
-        var connection = ALTPApplication.getConnection();
+        var connection = Database.getConnection();
         try {
             var statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, Integer.toString(level));
