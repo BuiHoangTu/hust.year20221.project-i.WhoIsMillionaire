@@ -1,4 +1,4 @@
-package edu.hust.tu.projecti.classes;
+package edu.hust.tu.projecti.question;
 
 import java.sql.Connection;
 import java.sql.SQLException;

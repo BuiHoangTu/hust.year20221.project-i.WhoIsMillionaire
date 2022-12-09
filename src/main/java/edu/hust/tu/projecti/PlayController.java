@@ -1,7 +1,7 @@
 package edu.hust.tu.projecti;
 
-import edu.hust.tu.projecti.classes.P1QuestionSet;
-import edu.hust.tu.projecti.classes.QuestionContent;
+import edu.hust.tu.projecti.question.P1QuestionSet;
+import edu.hust.tu.projecti.question.QuestionContent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

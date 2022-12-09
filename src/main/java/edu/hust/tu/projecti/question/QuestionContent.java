@@ -1,4 +1,4 @@
-package edu.hust.tu.projecti.classes;
+package edu.hust.tu.projecti.question;
 
 public class QuestionContent {
     public int id;

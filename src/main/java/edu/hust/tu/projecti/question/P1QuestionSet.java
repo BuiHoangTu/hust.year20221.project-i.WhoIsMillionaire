@@ -1,4 +1,6 @@
-package edu.hust.tu.projecti.classes;
+package edu.hust.tu.projecti.question;
+
+import edu.hust.tu.projecti.database.Database;
 
 import java.sql.SQLException;
 import java.util.Arrays;

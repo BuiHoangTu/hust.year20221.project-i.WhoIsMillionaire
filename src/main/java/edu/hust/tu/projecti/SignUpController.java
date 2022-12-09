@@ -1,6 +1,6 @@
 package edu.hust.tu.projecti;
 
-import edu.hust.tu.projecti.classes.Database;
+import edu.hust.tu.projecti.database.Database;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
