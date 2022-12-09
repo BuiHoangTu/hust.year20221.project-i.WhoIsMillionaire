@@ -1,12 +1,14 @@
 package edu.hust.tu.projecti.classes;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+/**
+ * A wrapper for {@link Set}<{@link Question}>, which is not very helpful.
+ */
+@Deprecated
 public class QuestionSet {
-    private Set<Question> questionSet;
+    private final Set<Question> questionSet;
 
 
     public QuestionSet(){

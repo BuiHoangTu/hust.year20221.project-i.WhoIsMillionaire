@@ -1,7 +1,5 @@
 package edu.hust.tu.projecti.classes;
 
-import java.util.List;
-
 public class QuestionContent {
     public int id;
     public String question;

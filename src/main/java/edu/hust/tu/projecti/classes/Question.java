@@ -19,10 +19,10 @@ import java.util.List;
  */
 public class Question {
 	private static final String sqlQuery = "SELECT * FROM Questions WHERE QLevel = ? ORDER BY RANDOM() LIMIT 1;";
-	private Connection connection;
+	private final Connection connection;
     private int id;
     private String question;        public String getQuestion() {return question;}
-    private List<String> answers;   public List<String> getAnswers() {return answers;}
+    private final List<String> answers;   public List<String> getAnswers() {return answers;}
     private int rightAnswer;        public int getRightAnswer() {return rightAnswer;}
 
     /**
@@ -31,7 +31,7 @@ public class Question {
      * @param level Used to take equivalent Qlevel in database
      */
     public Question(Connection connection, int level){
-        this.answers = new ArrayList<String>(4);
+        this.answers = new ArrayList<>(4);
 		this.connection = connection;
 
         this.refreshQuestion(level);
@@ -74,7 +74,7 @@ public class Question {
     @Override
     public boolean equals(Object o){
         if (o instanceof Question){
-            if(((Question) o).id == this.id) return true;
+            return ((Question) o).id == this.id;
         }
         return false;
     }

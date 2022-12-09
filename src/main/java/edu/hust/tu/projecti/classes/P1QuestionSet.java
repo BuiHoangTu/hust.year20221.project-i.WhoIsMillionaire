@@ -2,24 +2,18 @@ package edu.hust.tu.projecti.classes;
 
 import edu.hust.tu.projecti.ALTPApplication;
 
-import java.sql.Array;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * <h1> QUESTION </h1>
  * This class is an implement of question in database.
- * Each new object take a random question in database
- * with level associate with level marked database
- * <b>Note:</b> In this project, you will need to check
- * for repeated questions.
- * Create a List Question and a loop to push new question in
- * if that question is not already inside. The loop stops
- * when the number of questions is enough.
+ * Each new object take 15 random questions in database
+ * with 5 level-5, 5 level-10 and 5 level-15
+ * <b>Note:</b> For other question distribution, consider checking {@link Question}.
+ * Upon constructed, this class create an 15-wide array of {@link QuestionContent}s
+ * which is public to use.
  */
 public class P1QuestionSet {
     private static final String sqlQuery = "SELECT * FROM Questions WHERE QLevel = ? ORDER BY RANDOM() LIMIT 5;";
