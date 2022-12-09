@@ -25,7 +25,7 @@ public class HomeController {
     public void switchPlayView(ActionEvent event) throws IOException {
         Stage stage;
         Scene scene;
-        Parent root = null;
+        Parent root;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Play-view.fxml"));
         root = loader.load();
         scene = new Scene(root);
@@ -34,8 +34,8 @@ public class HomeController {
         stage.show();
     }
 
-    public void showHistory(ActionEvent event) {
-        Dialog<String> dialog = new Dialog<String>();
+    public void showHistory() {
+        Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("History");
         ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         //Show player history

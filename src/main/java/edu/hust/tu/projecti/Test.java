@@ -1,8 +1,6 @@
 package edu.hust.tu.projecti;
 
 import edu.hust.tu.projecti.classes.P1QuestionSet;
-import edu.hust.tu.projecti.classes.Question;
-import edu.hust.tu.projecti.classes.QuestionSet;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
