@@ -36,6 +36,10 @@ public class SignUpController {
         }
 
     }
+    @FXML
+    protected void onClickToLogIn(){
+        toLogIn();
+    }
 
 
     //Private Function

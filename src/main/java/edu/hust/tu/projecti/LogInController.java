@@ -1,5 +1,6 @@
 package edu.hust.tu.projecti;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -64,4 +65,19 @@ public class LogInController {
 
     public int getUserID() {return userID;}
 
+    @FXML
+    protected void onClickToSignup() {
+        // change view
+        FXMLLoader fxmlLoader = new FXMLLoader(LogInController.class.getResource("SignUp-view.fxml"));
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage stage =  (Stage) tfUserName.getScene().getWindow();
+
+        stage.setScene(scene);
+        stage.show();
+    }
 }
