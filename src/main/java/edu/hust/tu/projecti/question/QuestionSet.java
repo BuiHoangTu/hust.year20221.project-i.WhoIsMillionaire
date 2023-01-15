@@ -1,4 +1,4 @@
-package edu.hust.tu.projecti.classes;
+package edu.hust.tu.projecti.question;
 
 import java.util.HashSet;
 import java.util.Set;

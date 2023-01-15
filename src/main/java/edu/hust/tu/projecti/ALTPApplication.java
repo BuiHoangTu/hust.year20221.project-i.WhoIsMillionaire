@@ -6,39 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class ALTPApplication extends Application {
-    /**
-     * Database connect properties
-     * @deprecated
-     * These properties are no longer recommended to establish
-     * connection to database. They would become private in
-     * future version.
-     * <p> Use {@link package.class#getConnection()} instead
-     */
-    @Deprecated
-    public static final String dbURL = "jdbc:sqlite:SQL/sqlite_ProjectI.db",
-            userName= "root",
-            password= "";
-    private static volatile Connection connection = null;
-        public static Connection getConnection(){
-            if(connection == null){
-                try{
-                    connection = DriverManager.getConnection(
-                            dbURL/*,
-                            userName,
-                            password*/
-                    );
-                    connection.setAutoCommit(true);
-                }catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            return connection;
-        }
 
     @Override
     public void start(Stage stage){
