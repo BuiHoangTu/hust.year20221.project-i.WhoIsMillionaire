@@ -19,6 +19,7 @@ public class History {
 
         // get last 2 plays of user 1
         res = userLastPlays(2);
+        // res.getMetaData();
         try{
             while (res.next()) {
                 System.out.print(res.getString("Score") + "<--->");
