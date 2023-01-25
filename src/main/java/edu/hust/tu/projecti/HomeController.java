@@ -1,5 +1,7 @@
 package edu.hust.tu.projecti;
 
+import edu.hust.tu.projecti.database.History;
+import edu.hust.tu.projecti.util.Util;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.control.Dialog;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class HomeController {
     @FXML
@@ -38,8 +41,21 @@ public class HomeController {
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("History");
         ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+        var res = History.userLastPlays(5);
+        String historyMessage = "";
+        try {
+            while (res.next()) {
+                String temp = "Điểm số: " + res.getString("Score") + " - Thời gian chơi: " + Util.convertTime(res.getString("PlayDate")) + "\n";
+                System.out.print(temp);
+                historyMessage = historyMessage.concat(temp);
+                System.out.println("Diem so" + historyMessage);
+            }
+        } catch (SQLException ignored) {}
         //Show player history
-        dialog.setContentText("Kết quả người chơi");
+        dialog.setContentText("Kết quả người chơi: " + "\n"
+            + historyMessage
+        );
+        System.out.println("Ket qua: " + historyMessage);
         dialog.getDialogPane().getButtonTypes().add(type);
         dialog.show();
     }

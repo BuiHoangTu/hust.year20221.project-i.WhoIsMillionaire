@@ -1,5 +1,6 @@
 package edu.hust.tu.projecti;
 
+import edu.hust.tu.projecti.database.Database;
 import edu.hust.tu.projecti.question.P1QuestionSet;
 import edu.hust.tu.projecti.question.QuestionContent;
 import javafx.event.ActionEvent;
@@ -28,6 +29,7 @@ public class PlayController implements Initializable {
     private final P1QuestionSet questionSet = new P1QuestionSet();
 
     private int currentQuestion = 0;
+    private String currentPrize = "0";
 
 //    private final Label[] lAwards = new Label[] {lAward1, lAward2, lAward3, lAward4, lAward5, lAward6, lAward7 ,lAward8 ,lAward9,
 //            lAward10, lAward11, lAward12, lAward13, lAward14, lAward15};
@@ -45,9 +47,10 @@ public class PlayController implements Initializable {
     }
 
     public void dialogLose(ActionEvent event) {
+        Database.setScore(LogInController.userID, currentPrize + "đ");
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Tiếc quá");
-        alert.setHeaderText("headerText");
+        alert.setHeaderText("Bạn đã kết thúc phần chơi với số tiền: " + currentPrize + "đ");
         alert.setContentText("Trở về màn hình chính?");
         ButtonType okButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
         ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
@@ -73,24 +76,28 @@ public class PlayController implements Initializable {
         String rightAnswer = currentQuestionContent.answers[currentQuestionContent.rightAnswer];
         bAnswer1.setOnAction(event -> {
             if (bAnswer1.getText().equals(rightAnswer)) {
+                currentPrize = lAwards[currentQuestion].getText().substring(3);
                 setQuestion(questionSet.questions[++currentQuestion], lAwards);
             }
             else dialogLose(event);
         });
         bAnswer2.setOnAction(event -> {
             if (bAnswer2.getText().equals(rightAnswer)) {
+                currentPrize = lAwards[currentQuestion].getText().substring(3);
                 setQuestion(questionSet.questions[++currentQuestion], lAwards);
             }
             else dialogLose(event);
         });
         bAnswer3.setOnAction(event -> {
             if (bAnswer3.getText().equals(rightAnswer))  {
+                currentPrize = lAwards[currentQuestion].getText().substring(3);
                 setQuestion(questionSet.questions[++currentQuestion], lAwards);
             }
             else dialogLose(event);
         });
         bAnswer4.setOnAction(event -> {
             if (bAnswer4.getText().equals(rightAnswer))  {
+                currentPrize = lAwards[currentQuestion].getText().substring(3);
                 setQuestion(questionSet.questions[++currentQuestion], lAwards);
             }
             else dialogLose(event);
