@@ -23,9 +23,7 @@ public class LogInController {
     @FXML
     private Label lWarning;
 
-    public static int userID;
-
-    public LogInController() {
+	public LogInController() {
     }
 
     @FXML
@@ -44,7 +42,7 @@ public class LogInController {
             ResultSet resultSet = statement.executeQuery();
 
             if(resultSet.next()){
-                userID = resultSet.getInt("UID");
+                ALTPApplication.USER_ID = resultSet.getInt("UID");
 
                 // change view
                 FXMLLoader fxmlLoader = new FXMLLoader(LogInController.class.getResource("Home-view.fxml"));
@@ -67,9 +65,7 @@ public class LogInController {
         }
     }
 
-    public int getUserID() {return userID;}
-
-    @FXML
+	@FXML
     protected void onClickToSignup() {
         // change view
         FXMLLoader fxmlLoader = new FXMLLoader(LogInController.class.getResource("SignUp-view.fxml"));

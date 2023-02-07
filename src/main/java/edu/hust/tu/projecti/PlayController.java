@@ -47,7 +47,7 @@ public class PlayController implements Initializable {
     }
 
     public void dialogLose(ActionEvent event) {
-        Database.setScore(LogInController.userID, currentPrize + "đ");
+        Database.setScore(ALTPApplication.USER_ID, currentPrize + "đ");
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Tiếc quá");
         alert.setHeaderText("Bạn đã kết thúc phần chơi với số tiền: " + currentPrize + "đ");

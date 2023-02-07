@@ -41,7 +41,7 @@ public class HomeController {
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("History");
         ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
-        var res = History.userLastPlays(5);
+        var res = History.userLastPlays(5, ALTPApplication.USER_ID);
         String historyMessage = "";
         try {
             while (res.next()) {
