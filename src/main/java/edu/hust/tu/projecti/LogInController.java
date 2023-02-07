@@ -23,7 +23,7 @@ public class LogInController {
     @FXML
     private Label lWarning;
 
-    private int userID;
+    public static int userID;
 
     public LogInController() {
     }
