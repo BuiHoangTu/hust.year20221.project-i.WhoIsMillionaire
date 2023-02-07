@@ -5,11 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Database {
-    public static void main(String[] args) {
-        // set point
-        setScore(3, 100);
-    }
-
     private static final String dbURL = "jdbc:sqlite:SQL/sqlite_ProjectI.db";
 
     private static volatile Connection connection = null;

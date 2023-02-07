@@ -4,6 +4,6 @@ module edu.hust.tu.projecti {
     requires java.sql;
 
 
-    opens edu.hust.tu.projecti to javafx.fxml;
+    opens edu.hust.tu.projecti;
     exports edu.hust.tu.projecti;
 }
