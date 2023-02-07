@@ -18,7 +18,7 @@ public class History {
         System.out.println("\n");
 
         // get last 2 plays of user 1
-        res = userLastPlays(2);
+        res = userLastPlays(2, 1);
         // res.getMetaData();
         try{
             while (res.next()) {
@@ -40,28 +40,35 @@ public class History {
                 \t\tINNER join Users u\s
                 \t\ton s.UID = u.UID\s
                 \torder by Score DESC LIMIT ? ;""";
-        ResultSet res = null;
+        ResultSet res;
         try {
             var statement = Database.getConnection().prepareStatement(sql);
             statement.setString(1, Integer.toString(top));
             res = statement.executeQuery();
-        } catch (SQLException ignored) {}
+        } catch (SQLException ignored) {
+			return null;
+		}
         return res;
     }
 
-    public static ResultSet userLastPlays(int length){
-        ResultSet res = null;
+    public static ResultSet userLastPlays(int length, int userID){
+        ResultSet res;
         var sql = """
                 SELECT *\s
                 \tFROM Scores s\s
-                \tWHERE s.UID = 1
+                \tWHERE s.UID = ?
                 \tORDER BY PlayDate DESC\s
                 \tLIMIT ?""";
         try {
             var statement = Database.getConnection().prepareStatement(sql);
-            statement.setString(1, Integer.toString(length));
-            res = statement.executeQuery();
-        } catch (SQLException ignored){}
+
+			statement.setString(1, Integer.toString(userID));
+			statement.setString(2, Integer.toString(length));
+
+			res = statement.executeQuery();
+        } catch (SQLException ignored){
+			return null;
+		}
         return res;
     }
 
