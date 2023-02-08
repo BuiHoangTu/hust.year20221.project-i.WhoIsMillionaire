@@ -1,17 +1,18 @@
 package edu.hust.tu.projecti;
 
-import edu.hust.tu.projecti.database.Database;
+import edu.hust.tu.projecti.services.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.SQLException;
 
 public class SignUpController {
     @FXML
@@ -48,16 +49,8 @@ public class SignUpController {
         String sUserName = tfUserName.getText();
         String sPasswd = tfPasswd.getText();
 
-        Connection connection = Database.getConnection();
-        PreparedStatement statement;
         try{
-            statement = connection.prepareStatement("INSERT INTO Users " +
-                    "(Name, Passwd) " +
-                    "VALUES(?, ?);");
-            statement.setString(1, sUserName);
-            statement.setString(2, sPasswd);
-
-            statement.executeUpdate();
+            UserService.signUp(sUserName, sPasswd);
 
             isSignedUp = true;
             lWarning.setText("Your account is created");
@@ -71,8 +64,14 @@ public class SignUpController {
         }catch (SQLException e) {
             //19 is UserName UNIQUE
             if (e.getErrorCode() == 19){
+				lWarning.setText("Tài khoản đã tồn tại");
+				lWarning.setTextFill(Color.RED);
                 lWarning.setVisible(true);
-            }
+            } else {
+				lWarning.setText("Lỗi server! Thử lại sau");
+				lWarning.setTextFill(Color.ORANGE);
+				lWarning.setVisible(true);
+			}
         }
     }
 

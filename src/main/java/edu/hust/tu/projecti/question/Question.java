@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * <h1> QUESTION </h1>
- * This class is an implement of question in database.
- * Each new object take a random question in database
- * with level associate with level marked database
+ * This class is an implement of question in services.
+ * Each new object take a random question in services
+ * with level associate with level marked services
  * <b>Note:</b> In this project, you will need to check
  * for repeated questions.
  * Create a List Question and a loop to push new question in
@@ -41,8 +41,8 @@ public class Question {
 
     /**
      * Constructor of question
-     * @param connection Connection to ProjectI database
-     * @param level Used to take equivalent Qlevel in database
+     * @param connection Connection to ProjectI services
+     * @param level Used to take equivalent Qlevel in services
      */
     public Question(Connection connection, int level){
         this.answers = new ArrayList<>(4);

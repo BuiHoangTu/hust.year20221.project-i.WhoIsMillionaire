@@ -1,9 +1,9 @@
-package edu.hust.tu.projecti.database;
+package edu.hust.tu.projecti.services;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class History {
+public class HistoryService {
     public static void main(String[] args) {
         // get top 2 player
         var res = topPlay(2);

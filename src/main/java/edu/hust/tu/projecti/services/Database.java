@@ -1,4 +1,4 @@
-package edu.hust.tu.projecti.database;
+package edu.hust.tu.projecti.services;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
