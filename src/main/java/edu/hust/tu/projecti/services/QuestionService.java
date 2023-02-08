@@ -11,6 +11,7 @@ public class QuestionService {
 
 		var statement = connection.prepareStatement(sqlQuery);
 		statement.setString(1, Integer.toString(level));
+		statement.setString(2, Integer.toString(amount));
 		return statement.executeQuery();
 	}
 
