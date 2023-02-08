@@ -1,6 +1,6 @@
 package edu.hust.tu.projecti;
 
-import edu.hust.tu.projecti.database.History;
+import edu.hust.tu.projecti.services.HistoryService;
 import edu.hust.tu.projecti.util.Util;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,7 +41,7 @@ public class HomeController {
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("History");
         ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
-        var res = History.userLastPlays(5, ALTPApplication.USER_ID);
+        var res = HistoryService.userLastPlays(5, ALTPApplication.USER_ID);
         String historyMessage = "";
         try {
             while (res.next()) {

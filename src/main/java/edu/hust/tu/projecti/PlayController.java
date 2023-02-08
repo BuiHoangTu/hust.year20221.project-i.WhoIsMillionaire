@@ -1,6 +1,6 @@
 package edu.hust.tu.projecti;
 
-import edu.hust.tu.projecti.database.Database;
+import edu.hust.tu.projecti.services.Database;
 import edu.hust.tu.projecti.question.P1QuestionSet;
 import edu.hust.tu.projecti.question.QuestionContent;
 import javafx.event.ActionEvent;

@@ -1,6 +1,6 @@
 package edu.hust.tu.projecti.question;
 
-import edu.hust.tu.projecti.database.Database;
+import edu.hust.tu.projecti.services.QuestionService;
 
 import java.lang.reflect.Array;
 import java.sql.SQLException;
@@ -9,16 +9,15 @@ import java.util.function.IntFunction;
 
 /**
  * <h1> QUESTION </h1>
- * This class is an implement of question in database.
- * Each new object take 15 random questions in database
+ * This class is an implement of question in services.
+ * Each new object take 15 random questions in services
  * with 5 level-5, 5 level-10 and 5 level-15
  * <b>Note:</b> For other question distribution, consider checking {@link Question}.
  * Upon constructed, this class create an 15-wide array of {@link QuestionContent}s
  * which is public to use.
  */
 public class P1QuestionSet implements Set<QuestionContent> {
-    private static final String sqlQuery = "SELECT * FROM Questions WHERE QLevel = ? ORDER BY RANDOM() LIMIT 5;";
-    public QuestionContent[] questions;
+	public QuestionContent[] questions;
 
     /**
      * Constructor of question
@@ -38,11 +37,8 @@ public class P1QuestionSet implements Set<QuestionContent> {
      * <b> Note </b> In this project, at least 5 Question object is needed.
      */
     private void addQuestion(int level){
-        var connection = Database.getConnection();
-        try {
-            var statement = connection.prepareStatement(sqlQuery);
-            statement.setString(1, Integer.toString(level));
-            var sqlQuestion = statement.executeQuery();
+		try {
+			var sqlQuestion = QuestionService.getQuestions(level, 5);
             for (int i = level - 5; i < level; i++){
                 sqlQuestion.next();
                 this.questions[i].id = sqlQuestion.getInt("QID");
