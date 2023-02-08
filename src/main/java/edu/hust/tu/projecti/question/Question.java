@@ -21,9 +21,23 @@ public class Question {
 	private static final String sqlQuery = "SELECT * FROM Questions WHERE QLevel = ? ORDER BY RANDOM() LIMIT 1;";
 	private final Connection connection;
     private int id;
-    private String question;        public String getQuestion() {return question;}
-    private final List<String> answers;   public List<String> getAnswers() {return answers;}
-    private int rightAnswer;        public int getRightAnswer() {return rightAnswer;}
+    private String question;
+    private final List<String> answers;
+    private int rightAnswer;
+
+	// region getter
+	public String getQuestion() {
+		return question;
+	}
+
+	public List<String> getAnswers() {
+		return answers;
+	}
+
+	public int getRightAnswer() {
+		return rightAnswer;
+	}
+	// endregion
 
     /**
      * Constructor of question

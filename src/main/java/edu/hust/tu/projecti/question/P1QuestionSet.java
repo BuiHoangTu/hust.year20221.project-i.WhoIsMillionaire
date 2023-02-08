@@ -2,9 +2,10 @@ package edu.hust.tu.projecti.question;
 
 import edu.hust.tu.projecti.database.Database;
 
+import java.lang.reflect.Array;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
+import java.util.function.IntFunction;
 
 /**
  * <h1> QUESTION </h1>
@@ -15,7 +16,7 @@ import java.util.Collections;
  * Upon constructed, this class create an 15-wide array of {@link QuestionContent}s
  * which is public to use.
  */
-public class P1QuestionSet {
+public class P1QuestionSet implements Set<QuestionContent> {
     private static final String sqlQuery = "SELECT * FROM Questions WHERE QLevel = ? ORDER BY RANDOM() LIMIT 5;";
     public QuestionContent[] questions;
 
@@ -68,8 +69,128 @@ public class P1QuestionSet {
         } catch (SQLException e) {
             System.out.println("Query failed in taking a question");
         }
-
-
-
     }
+
+	@Override
+	public int size() {
+		return questions.length;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return questions.length == 0;
+	}
+
+	@Override
+	public boolean contains(Object o) {
+		if (o instanceof QuestionContent) {
+			for (QuestionContent questionContent : questions) {
+				if (questionContent.id == (((QuestionContent) o).id)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public Iterator<QuestionContent> iterator() {
+		return new Iterator<>() {
+			// next index of iterator
+			int next = 0;
+
+			@Override
+			public boolean hasNext() {
+				try {
+					return questions[next] != null;
+				} catch (IndexOutOfBoundsException e) {
+					return false;
+				}
+			}
+
+			@Override
+			public QuestionContent next() {
+				try {
+					return questions[next++];
+				} catch (IndexOutOfBoundsException e) {
+					return null;
+				}
+			}
+
+			@Override
+			public void remove() {
+				throw new UnsupportedOperationException();
+			}
+		};
+	}
+
+	@Override
+	public Object[] toArray() {
+		return questions.clone();
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <T> T[] toArray(T[] input) {
+		// new array of whichever longer
+		T[] output = input.length >= questions.length ?
+				input :
+				(T[]) Array.newInstance(input.getClass().getComponentType(), questions.length);
+
+		var iterator = iterator();
+		for (int i = 0; i < output.length; i++) {
+			if (!iterator.hasNext()) { // fewer elements than expected
+				if (input != output) return Arrays.copyOf(output, i); // if input is shorter
+				output[i] = null; // input is longer, output = input, add null-terminate
+				return output;
+			}
+			// copy questions to output if sufficient
+			output[i] = (T) iterator.next();
+		}
+		/*if (!iterator.hasNext())*/ return output; // done copying
+
+	}
+
+	@Override
+	public <T> T[] toArray(IntFunction<T[]> generator) {
+		return Set.super.toArray(generator);
+	}
+
+	@Override
+	public boolean add(QuestionContent questionContent) {
+		throw new UnsupportedOperationException("This Set only support read");
+	}
+
+	@Override
+	public boolean remove(Object o) {
+		throw new UnsupportedOperationException("This Set only support read");
+	}
+
+	@Override
+	public boolean containsAll(Collection<?> collection) {
+		for (var x : collection) {
+			if (!this.contains(x)) return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean addAll(Collection<? extends QuestionContent> collection) {
+		throw new UnsupportedOperationException("This Set only support read");
+	}
+
+	@Override
+	public boolean retainAll(Collection<?> collection) {
+		throw new UnsupportedOperationException("This Set only support read");
+	}
+
+	@Override
+	public boolean removeAll(Collection<?> collection) {
+		throw new UnsupportedOperationException("This Set only support read");
+	}
+
+	@Override
+	public void clear() {
+		throw new UnsupportedOperationException("This Set only support read");
+	}
 }

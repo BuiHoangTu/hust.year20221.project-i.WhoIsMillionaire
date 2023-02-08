@@ -6,4 +6,7 @@ module edu.hust.tu.projecti {
 
     opens edu.hust.tu.projecti;
     exports edu.hust.tu.projecti;
+
+	opens edu.hust.tu.projecti.question;
+	exports edu.hust.tu.projecti.question;
 }
