@@ -8,141 +8,105 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.hust.tu.projecti.PlayController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: transparent;" stylesheets="@styles/play.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.hust.tu.projecti.PlayController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <Button fx:id="bAnswer1" layoutX="31.0" layoutY="420.0" mnemonicParsing="false" prefHeight="50.0"
-                 prefWidth="258.0"
-                 style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A"
-                 textFill="WHITE"/>
-         <Label fx:id="lQuestionField" alignment="BASELINE_CENTER" layoutX="66.0" layoutY="104.0" prefHeight="122.0"
-                prefWidth="607.0" style="-fx-background-radius: 100px; -fx-background-color: #0598ff;" text="Câu hỏi"
-                textFill="WHITE">
+         <Button fx:id="bAnswer1" layoutX="31.0" layoutY="420.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
+         <Label fx:id="lQuestionField" alignment="BASELINE_CENTER" layoutX="66.0" layoutY="104.0" prefHeight="122.0" prefWidth="607.0" style="-fx-background-radius: 100px; -fx-background-color: #0598ff;" text="Câu hỏi" textFill="WHITE">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
          </Label>
-         <Button fx:id="bAnswer3" layoutX="31.0" layoutY="518.0" mnemonicParsing="false" prefHeight="50.0"
-                 prefWidth="258.0"
-                 style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A"
-                 textFill="WHITE"/>
-         <Button fx:id="bAnswer4" layoutX="433.0" layoutY="518.0" mnemonicParsing="false" prefHeight="50.0"
-                 prefWidth="258.0"
-                 style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A"
-                 textFill="WHITE"/>
-         <Button fx:id="bAnswer2" layoutX="433.0" layoutY="420.0" mnemonicParsing="false" prefHeight="50.0"
-                 prefWidth="258.0"
-                 style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A"
-                 textFill="WHITE"/>
+         <Button fx:id="bAnswer3" layoutX="31.0" layoutY="518.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
+         <Button fx:id="bAnswer4" layoutX="433.0" layoutY="518.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
+         <Button fx:id="bAnswer2" layoutX="433.0" layoutY="420.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="258.0" style="-fx-border-radius: 20px; -fx-background-radius: 100px; -fx-background-color: #0598ff;" text="A" textFill="WHITE" />
       </AnchorPane>
    </center>
    <right>
       <VBox prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
          <AnchorPane prefHeight="90.0" prefWidth="159.0">
-            <Button layoutX="14.0" layoutY="44.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0"
-                    style="-fx-background-radius: 50%; -fx-border-radius: 50%; -fx-pref-width: 30; -fx-pref-height: 30;"
-                    text="Button"/>
-            <Button layoutX="64.0" layoutY="44.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0"
-                    style="-fx-background-radius: 50%; -fx-border-radius: 50%; -fx-pref-width: 30; -fx-pref-height: 30;"
-                    text="Button"/>
-            <Button layoutX="113.0" layoutY="44.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0"
-                    style="-fx-background-radius: 50%; -fx-border-radius: 50%; -fx-pref-width: 30; -fx-pref-height: 30;"
-                    text="Button"/>
-            <Text fill="WHITE" layoutX="-1.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help"
-                  textAlignment="CENTER" wrappingWidth="159.7366943359375">
+            <Button fx:id="bHalfHelp" ellipsisString="" layoutX="14.0" layoutY="44.0" maxHeight="42.0" maxWidth="42.0" minHeight="35.0" minWidth="37.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="37.0" style="-fx-background-radius: 50%; -fx-border-radius: 50%; -fx-pref-width: 26; -fx-pref-height: 26;" styleClass="bHalfHelp" />
+            <Button fx:id="bCallHelp" layoutX="64.0" layoutY="44.0" minHeight="35.0" minWidth="37.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="37.0" style="-fx-background-radius: 50%; -fx-border-radius: 50%; -fx-pref-width: 30; -fx-pref-height: 30;" styleClass="bCallHelp" />
+            <Button fx:id="bAudienceHelp" layoutX="113.0" layoutY="44.0" minHeight="35.0" minWidth="37.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="37.0" style="-fx-background-radius: 50%; -fx-border-radius: 50%; -fx-pref-width: 30; -fx-pref-height: 30;" styleClass="bAudienceHelp" />
+            <Text fill="WHITE" layoutX="-1.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help" textAlignment="CENTER" wrappingWidth="159.7366943359375">
                <font>
-                  <Font size="16.0"/>
+                  <Font size="16.0" />
                </font>
             </Text>
          </AnchorPane>
-         <Label fx:id="lAward15" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="15.  150.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward15" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="15.  150.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward14" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="14.   85.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward14" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="14.   85.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward13" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="13.   60.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward13" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="13.   60.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward12" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="12.   40.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward12" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="12.   40.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward11" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="11.   30.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward11" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="11.   30.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward10" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="10.   22.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward10" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="10.   22.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward9" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="9.   14.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward9" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="9.   14.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward8" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="8.   10.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward8" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="8.   10.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward7" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="7.   6.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward7" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="7.   6.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward6" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="6.   3.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward6" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="6.   3.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward5" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="5.   2.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward5" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="5.   2.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward4" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="4.   1.000.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward4" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="4.   1.000.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward3" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="3.   600.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward3" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="3.   600.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward2" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="2.   400.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward2" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="2.   400.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
-         <Label fx:id="lAward1" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="1.   200.000"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label fx:id="lAward1" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="159.0" text="1.   200.000" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="14.0"/>
+               <Font size="14.0" />
             </font>
          </Label>
       </VBox>

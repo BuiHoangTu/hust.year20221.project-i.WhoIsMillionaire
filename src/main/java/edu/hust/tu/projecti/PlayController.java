@@ -11,18 +11,25 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PlayController implements Initializable {
     @FXML
     private Label lQuestionField;
     @FXML
-    private Button bAnswer1, bAnswer2, bAnswer3, bAnswer4;
+    private Button bAnswer1, bAnswer2, bAnswer3, bAnswer4, bHalfHelp, bCallHelp, bAudienceHelp;
     @FXML
     private Label lAward1, lAward2 ,lAward3 ,lAward4 ,lAward5 ,lAward6 ,lAward7 ,lAward8 ,lAward9,
             lAward10, lAward11, lAward12, lAward13, lAward14, lAward15;
@@ -77,28 +84,56 @@ public class PlayController implements Initializable {
         bAnswer1.setOnAction(event -> {
             if (bAnswer1.getText().equals(rightAnswer)) {
                 currentPrize = lAwards[currentQuestion].getText().substring(3);
-                setQuestion(questionSet.questions[++currentQuestion], lAwards);
+                if (currentQuestion < 14) {
+                    setQuestion(questionSet.questions[++currentQuestion], lAwards);
+                } else {
+                    Alert warning = new Alert(Alert.AlertType.CONFIRMATION);
+                    warning.setTitle("Congrats");
+                    warning.setContentText("End game");
+                    warning.show();
+                }
             }
             else dialogLose(event);
         });
         bAnswer2.setOnAction(event -> {
             if (bAnswer2.getText().equals(rightAnswer)) {
                 currentPrize = lAwards[currentQuestion].getText().substring(3);
-                setQuestion(questionSet.questions[++currentQuestion], lAwards);
+                if (currentQuestion < 14) {
+                    setQuestion(questionSet.questions[++currentQuestion], lAwards);
+                } else {
+                    Alert warning = new Alert(Alert.AlertType.CONFIRMATION);
+                    warning.setTitle("Congrats");
+                    warning.setContentText("End game");
+                    warning.show();
+                }
             }
             else dialogLose(event);
         });
         bAnswer3.setOnAction(event -> {
             if (bAnswer3.getText().equals(rightAnswer))  {
                 currentPrize = lAwards[currentQuestion].getText().substring(3);
-                setQuestion(questionSet.questions[++currentQuestion], lAwards);
-            }
+                if (currentQuestion < 14) {
+                    setQuestion(questionSet.questions[++currentQuestion], lAwards);
+                } else {
+                    Alert warning = new Alert(Alert.AlertType.CONFIRMATION);
+                    warning.setTitle("Congrats");
+                    warning.setContentText("End game");
+                    warning.show();
+                }
+        }
             else dialogLose(event);
         });
         bAnswer4.setOnAction(event -> {
             if (bAnswer4.getText().equals(rightAnswer))  {
                 currentPrize = lAwards[currentQuestion].getText().substring(3);
-                setQuestion(questionSet.questions[++currentQuestion], lAwards);
+                if (currentQuestion < 14) {
+                    setQuestion(questionSet.questions[++currentQuestion], lAwards);
+                } else {
+                    Alert warning = new Alert(Alert.AlertType.CONFIRMATION);
+                    warning.setTitle("Congrats");
+                    warning.setContentText("End game");
+                    warning.show();
+                }
             }
             else dialogLose(event);
         });
@@ -117,6 +152,10 @@ public class PlayController implements Initializable {
     public void setQuestion(QuestionContent currentQuestion, Label[] lAwards) {
         showAward(lAwards);
         lQuestionField.setText(currentQuestion.question);
+        bAnswer1.setVisible(true);
+        bAnswer2.setVisible(true);
+        bAnswer3.setVisible(true);
+        bAnswer4.setVisible(true);
         bAnswer1.setText(currentQuestion.answers[0]);
         bAnswer2.setText(currentQuestion.answers[1]);
         bAnswer3.setText(currentQuestion.answers[2]);
@@ -139,15 +178,38 @@ public class PlayController implements Initializable {
 
 
         }
-        if (currentQuestion<15) {
-            setQuestion(questionSet.questions[currentQuestion], lAwards);
-        } else {
-            Alert warning = new Alert(Alert.AlertType.CONFIRMATION);
-            warning.setTitle("Congrats");
-            warning.setContentText("End game");
-            warning.show();
-        }
-        //handleAnswer();
+
+        setQuestion(questionSet.questions[currentQuestion], lAwards);
+
+        bHalfHelp.setOnAction(event -> {
+            int currentAnsIndex = questionSet.questions[currentQuestion].rightAnswer;
+            ArrayList<Button> bAnswers = new ArrayList<>();
+            bAnswers.add(bAnswer1);
+            bAnswers.add(bAnswer2);
+            bAnswers.add(bAnswer3);
+            bAnswers.add(bAnswer4);
+            bAnswers.remove(currentAnsIndex);
+            Collections.shuffle(bAnswers);
+            bAnswers.get(0).setVisible(false);
+            bAnswers.get(1).setVisible(false);
+            bHalfHelp.setDisable(true);
+        });
+
+        bCallHelp.setOnAction(event -> {
+            String currentAns = questionSet.questions[currentQuestion].answers[questionSet.questions[currentQuestion].rightAnswer];
+            Dialog<String> callHelpDialog = new Dialog<>();
+            callHelpDialog.setTitle("Gọi điện thoại cho người thân!");
+            callHelpDialog.setContentText("Đang nối máy... Ronaldo nói rằng đáp án là: " + currentAns);
+            ButtonType type = new ButtonType("Cảm ơn Ronaldo!", ButtonBar.ButtonData.OK_DONE);
+            callHelpDialog.getDialogPane().getButtonTypes().add(type);
+            callHelpDialog.showAndWait();
+            bCallHelp.setDisable(true);
+        });
+
+        bAudienceHelp.setOnAction(event -> {
+
+        });
+
     }
 }
 
