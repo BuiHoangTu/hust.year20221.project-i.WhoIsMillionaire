@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,25 +35,15 @@ public class HomeController {
     }
 
     public void showHistory() {
-        Dialog<String> dialog = new Dialog<>();
-        dialog.setTitle("History");
-        ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
-        var res = HistoryService.userLastPlays(5, ALTPApplication.USER_ID);
-        String historyMessage = "";
-        try {
-            while (res.next()) {
-                String temp = "Điểm số: " + res.getString("Score") + " - Thời gian chơi: " + Util.convertTime(res.getString("PlayDate")) + "\n";
-                System.out.print(temp);
-                historyMessage = historyMessage.concat(temp);
-                System.out.println("Diem so" + historyMessage);
-            }
-        } catch (SQLException ignored) {}
-        //Show player history
-        dialog.setContentText("Kết quả người chơi: " + "\n"
-            + historyMessage
-        );
-        System.out.println("Ket qua: " + historyMessage);
-        dialog.getDialogPane().getButtonTypes().add(type);
-        dialog.show();
+		FXMLLoader loader = new FXMLLoader(ALTPApplication.class.getResource("/edu/hust/tu/projecti/History-view.fxml"));
+		try {
+			Dialog<String> dialog = new Dialog<>();
+			DialogPane pane = loader.load();
+			dialog.setDialogPane(pane);
+
+			dialog.setTitle("History");
+
+			dialog.show();
+		} catch (IOException ignored) {}
     }
 }

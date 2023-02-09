@@ -20,18 +20,11 @@ public class HistoryController {
 	@FXML
 	protected TableView<WorldRecord> tvWorld;
 	// endregion
-	private final int uID;
-
-
-	public HistoryController(int uID) {
-		this.uID = uID;
-	}
-
 
 	@FXML
 	protected void initialize() {
 		// region personal
-		ResultSet rsPersonal = HistoryService.userLastPlays(10, uID);
+		ResultSet rsPersonal = HistoryService.userLastPlays(10, ALTPApplication.USER_ID);
 		List<PersonalRecord> personals = new ArrayList<>();
 		try {
 			while (rsPersonal.next()) {
