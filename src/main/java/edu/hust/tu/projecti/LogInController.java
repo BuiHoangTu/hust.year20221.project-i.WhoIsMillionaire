@@ -1,30 +1,26 @@
 package edu.hust.tu.projecti;
 
-import edu.hust.tu.projecti.database.Database;
+import edu.hust.tu.projecti.services.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LogInController {
     @FXML
     private TextField tfUserName;
     @FXML
-    private TextField tfPasswd;
+    private PasswordField tfPasswd;
     @FXML
     private Label lWarning;
 
-    public static int userID;
-
-    public LogInController() {
+	public LogInController() {
     }
 
     @FXML
@@ -32,18 +28,11 @@ public class LogInController {
         String sUserName = tfUserName.getText();
         String sPasswd = tfPasswd.getText();
 
-        Connection connection = Database.getConnection();
-        PreparedStatement statement;
-        try{
-            statement = connection.prepareStatement("Select UID from Users "
-                    + "where Users.Name = ? and Users.Passwd = ?");
-            statement.setString(1, sUserName);
-            statement.setString(2, sPasswd);
+        try {
+			Integer uID = UserService.login(sUserName, sPasswd);
 
-            ResultSet resultSet = statement.executeQuery();
-
-            if(resultSet.next()){
-                userID = resultSet.getInt("UID");
+            if(uID != null){
+                ALTPApplication.USER_ID = uID;
 
                 // change view
                 FXMLLoader fxmlLoader = new FXMLLoader(LogInController.class.getResource("Home-view.fxml"));
@@ -62,13 +51,11 @@ public class LogInController {
             }
 
         }catch (SQLException e) {
-
+			e.printStackTrace();
         }
     }
 
-    public int getUserID() {return userID;}
-
-    @FXML
+	@FXML
     protected void onClickToSignup() {
         // change view
         FXMLLoader fxmlLoader = new FXMLLoader(LogInController.class.getResource("SignUp-view.fxml"));

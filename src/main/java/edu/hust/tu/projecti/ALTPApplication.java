@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ALTPApplication extends Application {
+	public static int USER_ID;
 
     @Override
     public void start(Stage stage){

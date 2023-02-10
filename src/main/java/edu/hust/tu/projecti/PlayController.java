@@ -1,6 +1,6 @@
 package edu.hust.tu.projecti;
 
-import edu.hust.tu.projecti.database.Database;
+import edu.hust.tu.projecti.services.Database;
 import edu.hust.tu.projecti.question.P1QuestionSet;
 import edu.hust.tu.projecti.question.QuestionContent;
 import javafx.event.ActionEvent;
@@ -11,18 +11,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class PlayController implements Initializable {
@@ -31,7 +26,7 @@ public class PlayController implements Initializable {
     @FXML
     private Button bAnswer1, bAnswer2, bAnswer3, bAnswer4, bHalfHelp, bCallHelp, bAudienceHelp;
     @FXML
-    private Label lAward1, lAward2 ,lAward3 ,lAward4 ,lAward5 ,lAward6 ,lAward7 ,lAward8 ,lAward9,
+    private Label lAward1, lAward2, lAward3, lAward4, lAward5, lAward6, lAward7, lAward8, lAward9,
             lAward10, lAward11, lAward12, lAward13, lAward14, lAward15;
     private final P1QuestionSet questionSet = new P1QuestionSet();
 
@@ -54,7 +49,7 @@ public class PlayController implements Initializable {
     }
 
     public void dialogLose(ActionEvent event) {
-        Database.setScore(LogInController.userID, currentPrize + "đ");
+        Database.setScore(ALTPApplication.USER_ID, currentPrize + "đ");
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Tiếc quá");
         alert.setHeaderText("Bạn đã kết thúc phần chơi với số tiền: " + currentPrize + "đ");
@@ -69,7 +64,7 @@ public class PlayController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-            }   else {
+            } else {
                 bAnswer1.setDisable(true);
                 bAnswer2.setDisable(true);
                 bAnswer3.setDisable(true);
@@ -92,8 +87,7 @@ public class PlayController implements Initializable {
                     warning.setContentText("End game");
                     warning.show();
                 }
-            }
-            else dialogLose(event);
+            } else dialogLose(event);
         });
         bAnswer2.setOnAction(event -> {
             if (bAnswer2.getText().equals(rightAnswer)) {
@@ -106,11 +100,10 @@ public class PlayController implements Initializable {
                     warning.setContentText("End game");
                     warning.show();
                 }
-            }
-            else dialogLose(event);
+            } else dialogLose(event);
         });
         bAnswer3.setOnAction(event -> {
-            if (bAnswer3.getText().equals(rightAnswer))  {
+            if (bAnswer3.getText().equals(rightAnswer)) {
                 currentPrize = lAwards[currentQuestion].getText().substring(3);
                 if (currentQuestion < 14) {
                     setQuestion(questionSet.questions[++currentQuestion], lAwards);
@@ -120,11 +113,10 @@ public class PlayController implements Initializable {
                     warning.setContentText("End game");
                     warning.show();
                 }
-        }
-            else dialogLose(event);
+            } else dialogLose(event);
         });
         bAnswer4.setOnAction(event -> {
-            if (bAnswer4.getText().equals(rightAnswer))  {
+            if (bAnswer4.getText().equals(rightAnswer)) {
                 currentPrize = lAwards[currentQuestion].getText().substring(3);
                 if (currentQuestion < 14) {
                     setQuestion(questionSet.questions[++currentQuestion], lAwards);
@@ -134,12 +126,12 @@ public class PlayController implements Initializable {
                     warning.setContentText("End game");
                     warning.show();
                 }
-            }
-            else dialogLose(event);
+            } else dialogLose(event);
         });
     }
+
     public void showAward(Label[] lAwards) {
-        for (int i = 0; i<15; i++) {
+        for (int i = 0; i < 15; i++) {
             System.out.println("I: " + i + ", currentQuestion: " + currentQuestion);
             if ((i == currentQuestion)) {
                 lAwards[i].setTextFill(Color.WHITE);
@@ -165,13 +157,13 @@ public class PlayController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Label[] lAwards = new Label[] {lAward1, lAward2, lAward3, lAward4, lAward5, lAward6, lAward7 ,lAward8 ,lAward9,
+        Label[] lAwards = new Label[]{lAward1, lAward2, lAward3, lAward4, lAward5, lAward6, lAward7, lAward8, lAward9,
                 lAward10, lAward11, lAward12, lAward13, lAward14, lAward15};
 
-        for (int i = 0; i < 15; i ++){
+        for (int i = 0; i < 15; i++) {
             var q = questionSet.questions[i];
             System.out.println(q.question);
-            for (var a : q.answers){
+            for (var a : q.answers) {
                 System.out.println("\t" + a);
             }
             System.out.println("TRUE " + "True Index : " + q.rightAnswer + " Value :" + q.answers[q.rightAnswer] + "\n\n\n");
