@@ -36,10 +36,10 @@ public class HistoryService {
     public static ResultSet topPlay(int top){
         var sql = """
                 SELECT u.Name, s.Score, s.PlayDate \s
-                \tFROM (SELECT * FROM Scores order by Score DESC LIMIT 10) s\s
+                \tFROM (SELECT * FROM Scores order by Score DESC LIMIT ?) s\s
                 \t\tINNER join Users u\s
                 \t\ton s.UID = u.UID\s
-                \torder by Score DESC LIMIT ? ;""";
+                \torder by Score DESC ;""";
         ResultSet res;
         try {
             var statement = Database.getConnection().prepareStatement(sql);
