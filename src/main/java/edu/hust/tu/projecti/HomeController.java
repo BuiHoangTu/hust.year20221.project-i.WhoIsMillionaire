@@ -33,15 +33,15 @@ public class HomeController {
     }
 
     public void showHistory() {
-        FXMLLoader loader = new FXMLLoader(ALTPApplication.class.getResource("/edu/hust/tu/projecti/History-view.fxml"));
-        try {
-            Dialog<String> dialog = new Dialog<>();
-            DialogPane pane = loader.load();
-            dialog.setDialogPane(pane);
-            dialog.setTitle("History");
-            dialog.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+		FXMLLoader loader = new FXMLLoader(ALTPApplication.class.getResource("/edu/hust/tu/projecti/History-view.fxml"));
+		try {
+			Dialog<String> dialog = new Dialog<>();
+			DialogPane pane = loader.load();
+			dialog.setDialogPane(pane);
+
+			dialog.setTitle("History");
+
+			dialog.show();
+		} catch (IOException ignored) {}
     }
 }

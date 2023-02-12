@@ -199,7 +199,17 @@ public class PlayController implements Initializable {
         });
 
         bAudienceHelp.setOnAction(event -> {
-
+            FXMLLoader loader = new FXMLLoader(ALTPApplication.class.getResource("/edu/hust/tu/projecti/AudienceHelp-view.fxml"));
+            try {
+                AudienceHelpController temp = new AudienceHelpController();
+                temp.setCurrentCorrectAnswerIndex(questionSet.questions[currentQuestion].rightAnswer);
+                Dialog<String> dialog = new Dialog<>();
+                DialogPane pane = loader.load();
+                dialog.setDialogPane(pane);
+                dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+                dialog.show();
+            } catch (IOException ignored) {}
+            bAudienceHelp.setDisable(true);
         });
 
     }
