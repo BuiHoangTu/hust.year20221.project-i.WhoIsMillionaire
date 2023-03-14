@@ -5,10 +5,17 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
+import java.util.prefs.Preferences;
+
 public class AudienceHelpController {
+    public  static Preferences questionPreferences = Preferences.userRoot();
     @FXML
-    BarChart barChartHelp;
+    protected BarChart barChartHelp;
     private int currentCorrectAnswerIndex;
+
+    public int getCurrentCorrectAnswerIndex() {
+        return currentCorrectAnswerIndex;
+    }
 
     public void setCurrentCorrectAnswerIndex(int index) {
         this.currentCorrectAnswerIndex = index;
@@ -27,15 +34,16 @@ public class AudienceHelpController {
     protected void initialize() {
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Tỉ lệ (%)");
-        System.out.println(currentCorrectAnswerIndex);
+        int answerIndex = Integer.parseInt(questionPreferences.get("answerIndex", ""));
+        System.out.println("Index: " + answerIndex);
         XYChart.Series dataSeries = new XYChart.Series();
-        if (currentCorrectAnswerIndex == 0) setDataSeries(dataSeries, "A", 60,
+        if (answerIndex == 0) setDataSeries(dataSeries, "A", 60,
                 "B", 15, "C", 15, "D", 10);
-        else if (currentCorrectAnswerIndex == 1) setDataSeries(dataSeries, "A", 15,
+        else if (answerIndex == 1) setDataSeries(dataSeries, "A", 15,
                 "B", 60, "C", 10, "D", 15);
-        else if (currentCorrectAnswerIndex == 2) setDataSeries(dataSeries, "A", 10,
+        else if (answerIndex == 2) setDataSeries(dataSeries, "A", 10,
                 "B", 5, "C", 75, "D", 10);
-        else if (currentCorrectAnswerIndex == 3) setDataSeries(dataSeries, "A", 0,
+        else if (answerIndex == 3) setDataSeries(dataSeries, "A", 0,
                 "B", 5, "C", 15, "D", 80);
         barChartHelp.getData().add(dataSeries);
         barChartHelp.setTitle("Tỉ lệ bình chọn theo đáp án của khán giả");

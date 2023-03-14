@@ -5,24 +5,35 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="bodybg" stylesheets="@styles/home.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.hust.tu.projecti.HomeController">
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <Button fx:id="exitButton" alignment="CENTER" layoutX="661.0" layoutY="433.0" mnemonicParsing="false" onAction="#onClickExit" prefHeight="46.0" prefWidth="130.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: #0598ff;" text="Exit" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="exitButton1" alignment="CENTER" layoutX="106.0" layoutY="433.0" mnemonicParsing="false" onAction="#showHistory" prefHeight="46.0" prefWidth="130.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: #0598ff;" text="History" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="exitButton2" alignment="CENTER" layoutX="385.0" layoutY="433.0" mnemonicParsing="false" onAction="#switchPlayView" prefHeight="46.0" prefWidth="130.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: #0598ff;" text="Play" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-      </AnchorPane>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="900.0" styleClass="bodybg" stylesheets="@styles/home.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.hust.tu.projecti.HomeController">
+    <top>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Button fx:id="exitButton" alignment="CENTER" layoutX="661.0" layoutY="433.0" mnemonicParsing="false"
+                    onAction="#onClickExit" prefHeight="46.0" prefWidth="130.0"
+                    style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: #202E77;"
+                    text="Exit" textAlignment="CENTER" textFill="WHITE">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Button>
+            <Button fx:id="exitButton1" alignment="CENTER" layoutX="106.0" layoutY="433.0" mnemonicParsing="false"
+                    onAction="#showHistory" prefHeight="46.0" prefWidth="130.0"
+                    style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: #202E77;"
+                    text="History" textAlignment="CENTER" textFill="WHITE">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Button>
+            <Button fx:id="exitButton2" alignment="CENTER" layoutX="385.0" layoutY="433.0" mnemonicParsing="false"
+                    onAction="#switchPlayView" prefHeight="46.0" prefWidth="130.0"
+                    style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: #202E77;"
+                    text="Play" textAlignment="CENTER" textFill="WHITE">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Button>
+        </AnchorPane>
+    </top>
 </BorderPane>

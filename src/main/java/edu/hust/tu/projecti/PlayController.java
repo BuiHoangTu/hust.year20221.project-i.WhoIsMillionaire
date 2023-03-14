@@ -19,8 +19,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
+
 
 public class PlayController implements Initializable {
+
     @FXML
     private Label lQuestionField;
     @FXML
@@ -49,10 +52,12 @@ public class PlayController implements Initializable {
     }
 
     public void dialogLose(ActionEvent event) {
-        Database.setScore(ALTPApplication.USER_ID, currentPrize + "đ");
+        System.out.println(currentPrize);
+        int saveScore = Integer.parseInt(currentPrize.trim().replace(".", ""));
+        Database.setScore(ALTPApplication.USER_ID, saveScore);
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Tiếc quá");
-        alert.setHeaderText("Bạn đã kết thúc phần chơi với số tiền: " + currentPrize + "đ");
+        alert.setHeaderText("Bạn đã kết thúc phần chơi với số tiền: " + currentPrize.trim() + "đ");
         alert.setContentText("Trở về màn hình chính?");
         ButtonType okButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
         ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
@@ -201,9 +206,8 @@ public class PlayController implements Initializable {
         bAudienceHelp.setOnAction(event -> {
             FXMLLoader loader = new FXMLLoader(ALTPApplication.class.getResource("/edu/hust/tu/projecti/AudienceHelp-view.fxml"));
             try {
-                AudienceHelpController temp = new AudienceHelpController();
-                System.out.println(questionSet.questions[currentQuestion].rightAnswer);
-                temp.setCurrentCorrectAnswerIndex(questionSet.questions[currentQuestion].rightAnswer);
+                Preferences questionPreferences = Preferences.userRoot();
+                questionPreferences.put("answerIndex", String.valueOf(questionSet.questions[currentQuestion].rightAnswer));
                 Dialog<String> dialog = new Dialog<>();
                 DialogPane pane = loader.load();
                 dialog.setDialogPane(pane);
