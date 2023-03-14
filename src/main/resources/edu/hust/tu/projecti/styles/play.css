@@ -1,0 +1,11 @@
+.bHalfHelp {
+    -fx-graphic: url("../assets/50-50.png");
+}
+
+.bCallHelp {
+    -fx-graphic: url("../assets/call.png");
+}
+
+.bAudienceHelp {
+    -fx-graphic: url("../assets/statistic.png");
+}

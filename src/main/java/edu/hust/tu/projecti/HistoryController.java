@@ -10,8 +10,10 @@ import javafx.scene.control.TableView;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class HistoryController {
 	// region fxml
@@ -91,6 +93,8 @@ public class HistoryController {
 
 
 	private static class PersonalRecord {
+		Locale locale = new Locale("vi", "VN");
+		NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
 		private final String score;
 		private final String playDate;
 
@@ -100,7 +104,7 @@ public class HistoryController {
 		}
 
 		public String getScore() {
-			return score;
+			return numberFormat.format(Integer.valueOf(score));
 		}
 		public String getPlayDate() {
 			return playDate;

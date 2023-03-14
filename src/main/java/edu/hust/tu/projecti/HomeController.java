@@ -1,7 +1,5 @@
 package edu.hust.tu.projecti;
 
-import edu.hust.tu.projecti.services.HistoryService;
-import edu.hust.tu.projecti.util.Util;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,11 +10,11 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class HomeController {
     @FXML
     Button exitButton;
+
     public void onClickExit() {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
@@ -29,7 +27,7 @@ public class HomeController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Play-view.fxml"));
         root = loader.load();
         scene = new Scene(root);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
