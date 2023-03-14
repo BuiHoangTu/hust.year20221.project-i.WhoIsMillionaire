@@ -202,6 +202,7 @@ public class PlayController implements Initializable {
             FXMLLoader loader = new FXMLLoader(ALTPApplication.class.getResource("/edu/hust/tu/projecti/AudienceHelp-view.fxml"));
             try {
                 AudienceHelpController temp = new AudienceHelpController();
+                System.out.println(questionSet.questions[currentQuestion].rightAnswer);
                 temp.setCurrentCorrectAnswerIndex(questionSet.questions[currentQuestion].rightAnswer);
                 Dialog<String> dialog = new Dialog<>();
                 DialogPane pane = loader.load();

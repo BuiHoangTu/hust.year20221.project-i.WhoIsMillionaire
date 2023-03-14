@@ -27,6 +27,7 @@ public class AudienceHelpController {
     protected void initialize() {
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Tỉ lệ (%)");
+        System.out.println(currentCorrectAnswerIndex);
         XYChart.Series dataSeries = new XYChart.Series();
         if (currentCorrectAnswerIndex == 0) setDataSeries(dataSeries, "A", 60,
                 "B", 15, "C", 15, "D", 10);
